@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Press Note Generator</title>
+    <style>
+        *{
+            box-sizing:border-box;
+        }
+        html, body{
+            margin:0;
+            padding:20px;
+            background:#f2f2f2;
+            font-family:Gautami,"Noto Sans Telugu",sans-serif;
+        }
+        /* బటన్స్ ఉండే కంటైనర్ */
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .print-btn{
+            padding:12px 30px;
+            background:#28a745;
+            color:#fff;
+            border:none;
+            border-radius:5px;
+            font-size:18px;
+            font-weight:bold;
+            cursor:pointer;
+        }
+        /* హోమ్ బటన్ స్టైల్ */
+        .home-btn{
+            padding:12px 30px;
+            background:#007bff;
+            color:#fff;
+            border:none;
+            border-radius:5px;
+            font-size:18px;
+            font-weight:bold;
+            text-decoration:none;
+            cursor:pointer;
+            display: inline-block;
+        }
+        #press-note {
+            width: 210mm;
+            min-height: 297mm;
+            margin: auto;
+            background: #fff;
+            border: 2px solid #000;
+            padding: 25mm 20mm;
+        }
+        .main-title{
+            text-align:center;
+            font-size:34px;
+            font-weight:800;
+            margin-bottom:15px;
+        }
+        .headline{
+            text-align:center;
+            font-size:22px;
+            font-weight:600;
+            margin-bottom:30px;
+        }
+        .headline span{
+            border-bottom:1.5px solid #000;
+            padding-bottom:3px;
+        }
+        .date-section{
+            text-align:right;
+            font-size:20px;
+            margin-bottom:30px;
+        }
+        .content{
+            font-size:20px;
+            line-height:1.8;
+            text-align:justify;
+            text-indent:50px;
+            margin-bottom:15px;
+        }
+        .signature-area{
+            margin-top:80px;
+            width:320px;
+            float:right;
+            text-align:center;
+            line-height:1.6;
+            font-size:19px;
+            font-weight:bold;
+        }
+        .clear{
+            clear:both;
+        }
+        .editable-block{
+            outline:none;
+            min-height:1em;
+        }
+        [contenteditable="true"]:focus{
+            outline:none;
+        }
+
+        /* Mobile View */
+        @media screen and (max-width:768px){
+            html, body{
+                padding:10px;
+            }
+            .btn-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            .print-btn, .home-btn {
+                width: 100%;
+                text-align: center;
+            }
+            #press-note{
+                width:100%;
+                min-height:auto;
+                padding:15px;
+            }
+            .main-title{
+                font-size:26px;
+            }
+            .headline{
+                font-size:20px;
+            }
+            .content{
+                font-size:18px;
+            }
+            .signature-area{
+                width:100%;
+                margin-top:60px;
+            }
+        }
+
+        /* Print Settings */
+        @media print{
+            html, body{
+                margin: 0;
+                padding: 0;
+                background: #fff;
+            }
+            /* ప్రింట్ తీసేటప్పుడు రెండు బటన్స్ దాచడానికి */
+            .btn-container, .print-btn, .home-btn{
+                display:none !important;
+            }
+            #press-note{
+                width: 180mm;
+                min-height: 267mm;
+                margin: 15mm auto;
+                border: 2px solid #000;
+                padding: 10mm;
+                box-shadow: none;
+            }
+            @page{
+                size: A4;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="btn-container">
+        <button class="print-btn" onclick="window.print()"> ప్రింట్ తీసుకోండి </button>
+        <a href="https://fillandprint.github.io" class="home-btn"> హోమ్ పేజీ (Home) </a>
+    </div>
+
+    <div id="press-note">
+        <div class="main-title">
+            <div contenteditable="true" class="editable-block"> ప్రాంతీయ వ్యవసాయ మార్కెట్ కమిటీ </div>
+        </div>
+        <div class="headline">
+            <span contenteditable="true"> పత్రిక ప్రకటన </span>
+        </div>
+        <div class="date-section">
+            తేదీ. <span contenteditable="true"> 13.01.2026 </span>
+        </div>
+        <div class="content">
+            <div contenteditable="true" class="editable-block"> సమస్త రైతు సోదరులకు తెలియజేయునది ఏమనగా, తేదీ 14.01.2026 నాడు భోగి పండుగ, తేదీ 15.01.2026 నాడు సంక్రాంతి పండుగ, తేదీ 16.01.2026 నాడు కనుమ పండుగ సందర్భంగా మూడు రోజులు మార్కెట్ యార్డుకు మరియు కార్యาลัยమునకు సెలవు ప్రకటించబడినది. కావున రైతు సోదరులు అందరు ఈ విషయాన్ని గమనించి, సెలవు రోజులలో మార్కెట్ యార్డుకు ఎటువంటి సరుకులు తీసుకురాకూడదని తెలియజేయడమైనది. </div>
+        </div>
+        <div class="signature-area">
+            <div contenteditable="true" class="editable-block"> కార్యదర్శి గ్రేడ్-I </div>
+            <div contenteditable="true" class="editable-block"> వ్యవసాయ మార్కెట్ కమిటీ </div>
+            <div contenteditable="true" class="editable-block"> ఊరు పేరు </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+</body>
+</html>
